@@ -26,8 +26,6 @@ body {
 
 body .swiper {
   overflow: initial;
-  width: 110%;
-  transform: translateX(-2.5rem);
 }
 
 .swiper-wrapper {

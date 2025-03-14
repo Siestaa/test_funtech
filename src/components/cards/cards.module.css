@@ -38,6 +38,7 @@
 	font-weight: 600;
 	margin: 0;
 	margin-bottom: 6.25rem;
+	opacity: 0;
 }
 
 .cardsButtonContainer {
@@ -46,6 +47,7 @@
 	width: fit-content;
 	margin: 7.125rem auto 0;
 	position: relative;
+	opacity: 0;
 
 	&::after {
 		content: '';
@@ -151,6 +153,7 @@
 	.card {
 		width: 19.57rem;
 	}
+
 	.cardsContainer {
 		width: 100%;
 	}
