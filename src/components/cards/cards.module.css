@@ -1,0 +1,157 @@
+.cardsContainer {
+	max-width: 100vw;
+	width: 100vw;
+	background-color: rgba(241, 241, 241, 1);
+	padding: 4.375rem 0 5.625rem;
+}
+
+.card {
+	min-width: 17.5rem;
+	width: 17.5rem;
+	aspect-ratio: 0.7/1;
+	padding: 0.875rem 0.875rem 1.25rem;
+	box-sizing: border-box;
+	background-color: white;
+	border-radius: 1.5rem;
+	font-family: "Poppins", sans-serif;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 1.125rem;
+	align-items: center;
+	box-shadow: 0 0.3125rem 0.875rem 1rem rgba(28, 29, 32, 0.08);
+}
+
+.cardImage {
+	object-fit: cover;
+	width: 100%;
+	aspect-ratio: 1/1;
+	object-position: center center;
+	border-radius: 1.5rem;
+}
+
+.cardsTitle {
+	font-size: 2.8125rem;
+	font-family: "Poppins", sans-serif;
+	color: rgba(197, 197, 197, 1);
+	text-align: center;
+	font-weight: 600;
+	margin: 0;
+	margin-bottom: 6.25rem;
+}
+
+.cardsButtonContainer {
+	display: flex;
+	box-shadow: 0 43.12px 34.49px -25.8px rgba(15, 15, 15, 0.12);
+	width: fit-content;
+	margin: 7.125rem auto 0;
+	position: relative;
+
+	&::after {
+		content: '';
+		display: block;
+		width: 0.125rem;
+		height: 44%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: rgba(230, 232, 236, 1);
+	}
+}
+
+.cardButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1.125rem 2.125rem 1.125rem 1.125rem;
+	border: none;
+	background-color: rgba(252, 252, 253, 1);
+	border-radius: 1rem 0 0 1rem;
+	cursor: pointer;
+	box-shadow: 0;
+	transition: .5s;
+
+	& img {
+		transition: .5s;
+	}
+
+	&:hover {
+		box-shadow: inset 5px 5px 9px #afafaf,
+			inset -5px -5px 9px rgba(252, 252, 253, 1);
+
+		& img {
+			transform: translate(-2px, 2px);
+		}
+	}
+
+	&:nth-child(2) {
+		padding: 1.125rem 1.125rem 1.125rem 2.125rem;
+		border-radius: 0 1rem 1rem 0;
+
+		&:hover {
+			box-shadow: inset -5px 5px 9px #afafaf,
+				inset 5px -5px 9px rgba(252, 252, 253, 1);
+		}
+
+		& img {
+			transform: rotate(180deg);
+		}
+
+		&:hover img {
+			transform: translate(2px, 2px) rotate(180deg);
+		}
+	}
+}
+
+.cardTimer {
+	padding: 0.5rem 0.875rem;
+	position: absolute;
+	top: 1.75rem;
+	right: 1.375rem;
+	background-color: rgba(28, 29, 32, 0.35);
+	border-radius: 0.625rem;
+	width: 8.5rem;
+	text-align: center;
+	font-size: 0.875;
+	box-sizing: border-box;
+}
+
+.cardInfo {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto auto;
+}
+
+.cardTitle {
+	font-size: 1.3125rem;
+	font-weight: 600;
+	margin: 0;
+	grid-column: 1/3;
+	grid-row: 1/2;
+}
+
+.cardStatus {
+	font-size: 0.875rem;
+	color: rgba(148, 163, 184, 1);
+	grid-column: 1/2;
+	grid-row: 2/3;
+}
+
+.cardPrice {
+	display: flex;
+	gap: 0.125rem;
+	align-items: center;
+	grid-column: 1/2;
+	grid-row: 3/4;
+	font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+	.card {
+		width: 19.57rem;
+	}
+	.cardsContainer {
+		width: 100%;
+	}
+}

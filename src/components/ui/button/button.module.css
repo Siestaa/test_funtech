@@ -1,0 +1,32 @@
+.button {
+	background-color: white;
+	color: rgba(20, 20, 22, 1);
+	border-radius: 16px;
+	padding: 1rem 1.5rem;
+	text-transform: uppercase;
+	cursor: pointer;
+	margin-left: auto;
+	font-size: 1rem;
+	outline: 2px solid rgba(20, 20, 22, 1);
+	box-sizing: border-box;
+	font-weight: 400;
+	font-family: "Inter", sans-serif;
+	line-height: 1.5rem;
+	border: none;
+	transition: .5s;
+
+	&:hover {
+		background-color: rgba(215, 215, 215, 1);
+	}
+}
+
+.backButton {
+	background-color: rgba(20, 20, 22, 1);
+	color: white;
+	outline: none;
+
+	&:hover {
+		background-color: rgba(215, 215, 215, 1);
+		color: rgba(20, 20, 22, 1);
+	}
+}

@@ -1,0 +1,120 @@
+.footer,
+.footerMobile {
+	background-color: rgba(20, 20, 22, 1);
+}
+
+.footerInner {
+	max-width: 77.8125rem;
+	margin: 0 auto;
+	padding: 5.75rem 6rem 5.0625rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.logo {
+	display: flex;
+	gap: 0.625rem;
+	align-items: center;
+	text-decoration: none;
+
+	& svg {
+		fill: white;
+		width: 4.0625rem;
+		height: 4.0625rem;
+	}
+}
+
+.logoText {
+	font-size: 1.875rem;
+	color: white;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+}
+
+.linksList {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding-bottom: 1.5625rem;
+	border-bottom: 1px solid rgba(129, 129, 129, 0.25);
+	gap: 10px;
+}
+
+.list {
+	display: flex;
+	margin-left: auto;
+	align-items: center;
+	gap: min(8vw, 4.375rem)
+}
+
+.listItem {
+	text-decoration: none;
+	color: rgba(185, 185, 185, 1);
+	font-size: 1.125rem;
+}
+
+.socialLink svg {
+	fill: rgba(83, 83, 83, 1);
+	transition: .5s;
+}
+
+.socialLink:hover svg {
+	fill: rgba(255, 255, 255, 1);
+}
+
+.socialContainer {
+	display: flex;
+	align-items: center;
+	padding-top: 3.5rem;
+}
+
+.copyright {
+	font-size: 1.0625rem;
+	color: rgba(153, 153, 153, 1);
+	font-weight: 500;
+}
+
+.socialList {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	gap: 3.375rem;
+}
+
+@media (max-width: 600px) {
+
+	.footerInner {
+		padding: 5.1rem 3rem;
+
+	}
+
+	.linksList {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto auto;
+		gap: 4.9rem 5px;
+		padding-bottom: 3.13rem;
+	}
+
+	.list {
+		flex-direction: column;
+		align-items: flex-start;
+		margin: 0;
+	}
+
+	.listItem {
+		text-transform: uppercase;
+		font-size: 1.37rem;
+	}
+
+	.socialList {
+		gap: 1.96rem;
+	}
+
+	.copyright {
+		text-align: center;
+		margin-top: 3.13rem;
+		font-size: 1.32rem;
+	}
+}

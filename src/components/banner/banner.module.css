@@ -1,0 +1,98 @@
+.bannerContainer {
+	max-width: 100vw;
+	width: 100vw;
+	margin-top: 7.1875rem;
+	margin-bottom: 10rem;
+	box-sizing: border-box;
+}
+
+.banner {
+	width: clamp(20rem, 90vw, 77.8125rem);
+	margin: 0 auto;
+	padding: 1.9375rem 1.9375rem 1.9375rem 4.125rem;
+	padding-left: clamp(1.9375rem, 4.125rem, 2%);
+	box-sizing: border-box;
+	display: flex;
+	background-color: rgba(20, 20, 22, 1);
+	border-radius: 1.875rem;
+	gap: 1rem;
+}
+
+.bannerInfo {
+	display: flex;
+	flex-direction: column;
+	font-family: "Poppins", sans-serif;
+}
+
+.bannerTitle {
+	font-size: 2.8125rem;
+	color: white;
+	font-weight: 600;
+	margin: 0;
+}
+
+.bannerText {
+	font-size: 1.25rem;
+	color: rgba(212, 212, 212, 1);
+	font-weight: 500;
+}
+
+.bannerButtons {
+	margin-top: 3.125rem;
+	display: flex;
+	gap: 1.875rem;
+
+	& button {
+		font-weight: 600;
+		font-size: 1.3125rem;
+		padding: 1.1875rem 1.875rem;
+		border-radius: 0.75rem;
+		text-transform: capitalize;
+		margin: 0;
+
+		&:nth-child(2) {
+			outline: 2px solid white;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.bannerContainer {
+		padding: 0 3rem;
+		width: 100%;
+		margin: 11.36rem 0 18.87rem;
+	}
+
+	.banner {
+		margin: 0;
+		flex-direction: column;
+		width: 100%;
+		padding: 2.075rem 3.85rem 8.04rem;
+		position: relative;
+	}
+
+	.bannerInfo {
+		width: 100%;
+		text-align: center;
+	}
+
+	.bannerTitle {
+		font-size: 2.17rem;
+	}
+
+	.bannerText {
+		font-size: 1rem;
+	}
+
+	.bannerButtons {
+		margin-top: 2.47rem;
+		max-width: 100%;
+		justify-content: center;
+
+		& button {
+			font-size: 1.03rem;
+			padding: 0.98rem 1.27rem;
+		}
+	}
+
+}
