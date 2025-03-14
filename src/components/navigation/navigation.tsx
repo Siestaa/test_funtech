@@ -9,7 +9,9 @@ export const Navigation = () => {
 	const [isFixing, setIsFixing] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 	const { baseFontSize } = calculateSlidesPerView()
-	const screenSize = getScreenSize()
+	const [screenSize, setScreenSize] = useState(getScreenSize())
+
+
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -22,10 +24,11 @@ export const Navigation = () => {
 				setIsFixing(false)
 			}
 		}
-
+		window.addEventListener('resize', () => setScreenSize(getScreenSize()))
 		window.addEventListener('scroll', handleScroll)
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
+			window.removeEventListener('resize', () => setScreenSize(getScreenSize()))
 		}
 	}, [])
 

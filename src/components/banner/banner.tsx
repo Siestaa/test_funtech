@@ -1,10 +1,19 @@
+import { useEffect, useState } from 'react'
 import { getScreenSize } from '../../utills/remValues'
 import { Button } from '../ui/button/button'
 import { Image } from '../ui/image/image'
 import styles from './banner.module.css'
 
 export const Banner = () => {
-	const screenSize = getScreenSize()
+	const [screenSize, setScreenSize] = useState(getScreenSize())
+
+	useEffect(() => {
+		window.addEventListener('resize', () => setScreenSize(getScreenSize()))
+
+		return () => {
+			window.removeEventListener('resize', () => setScreenSize(getScreenSize()))
+		}
+	}, [])
 
 	return (
 		<div className={styles.bannerContainer}>
@@ -27,9 +36,9 @@ export const Banner = () => {
 						position: screenSize === 'mobile' ? 'absolute' : 'relative',
 						marginLeft: 'auto',
 						marginRight: screenSize === 'mobile' ? 'auto' : '',
-						top: '16.17rem',
-						left: '50%',
-						transform: 'translateX(-50%)'
+						top: screenSize === 'mobile' ? '16.17rem' : '',
+						left: screenSize === 'mobile' ? '50%' : '',
+						transform: screenSize === 'mobile' ? 'translateX(-50%)' : '',
 					}}
 				/>
 			</div>

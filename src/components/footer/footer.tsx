@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { getScreenSize } from '../../utills/remValues'
 import { Facebook } from '../../utills/svg/facebook'
 import { Instagram } from '../../utills/svg/instagram'
@@ -8,7 +9,15 @@ import styles from './footer.module.css'
 import { FooterMobile } from './footerMobile'
 
 export const Footer = () => {
-	const screenSize = getScreenSize()
+	const [screenSize, setScreenSize] = useState(getScreenSize())
+
+	useEffect(() => {
+		window.addEventListener('resize', () => setScreenSize(getScreenSize()))
+
+		return () => {
+			window.removeEventListener('resize', () => setScreenSize(getScreenSize()))
+		}
+	}, [])
 
 	return (
 		<>
