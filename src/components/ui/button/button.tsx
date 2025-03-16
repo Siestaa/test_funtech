@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { CSSProperties } from 'react'
+import { CSSProperties, MouseEvent } from 'react'
 import styles from './button.module.css'
 
 interface ButtonProps {
@@ -8,6 +8,8 @@ interface ButtonProps {
 	onClick?: () => void
 	text: string
 	style?: CSSProperties
+	type?: 'button' | 'submit' | 'reset'
+	disabled?: boolean
 }
 
 export const Button = ({
@@ -16,29 +18,35 @@ export const Button = ({
 	onClick,
 	text,
 	style,
+	type = 'button',
+	disabled,
 }: ButtonProps) => {
-	const handleClick = (e: React.MouseEvent) => {
+	const handleClick = (e: MouseEvent) => {
 		e.preventDefault()
-		if (onClick) onClick()
+		onClick?.()
+	}
+
+	const buttonClasses = clsx(styles.button, {
+		[styles.backButton]: isBlack,
+		[styles.disabled]: disabled,
+	})
+
+	const commonProps = {
+		className: buttonClasses,
+		style,
+		children: text,
+	}
+
+	if (link) {
+		return <a href={link} {...commonProps} />
 	}
 
 	return (
-		<>
-			{link ? (
-				<a
-					href={link}
-					className={clsx(styles.button, { [styles.backButton]: isBlack })}
-					style={style}>
-					{text}
-				</a>
-			) : (
-				<button
-					onClick={handleClick}
-					className={clsx(styles.button, { [styles.backButton]: isBlack })}
-					style={style}>
-					{text}
-				</button>
-			)}
-		</>
+		<button
+			type={type}
+			onClick={handleClick}
+			disabled={disabled}
+			{...commonProps}
+		/>
 	)
 }

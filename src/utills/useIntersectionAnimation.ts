@@ -15,7 +15,7 @@ export const useIntersectionAnimation = (
 				})
 			},
 			{
-				threshold: 0.2,
+				threshold: 0,
 			}
 		)
 
@@ -28,5 +28,5 @@ export const useIntersectionAnimation = (
 				observer.unobserve(ref.current)
 			}
 		}
-	}, [ref, animate])
+	}, [])
 }

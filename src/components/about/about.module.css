@@ -1,8 +1,8 @@
 .aboutContainer {
 	max-width: 100%;
 	width: 100%;
-	margin-top: 3.25rem;
-	margin-bottom: 10rem;
+	padding-top: 3.25rem;
+	padding-bottom: 10rem;
 }
 
 .about {
@@ -94,12 +94,11 @@
 }
 
 .aboutTextContainer::before {
-	display: block;
 	content: '';
+	display: block;
 	width: 12rem;
 	height: 1px;
-	background-color: rgba(32, 31, 31, 1);
-	opacity: .2;
+	background-color: rgba(32, 31, 31, 0.2);
 }
 
 @media (max-width: 600px) {
@@ -141,6 +140,7 @@
 		left: 7.57rem;
 		position: absolute;
 		top: -0.5rem;
+		left: calc(50% - 4rem * 2);
 	}
 
 	.aboutTextHeader {

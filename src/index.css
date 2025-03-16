@@ -20,25 +20,18 @@ body {
   width: 100%;
 }
 
-.swiper-wrapper::-webkit-scrollbar {
-  width: 0;
-}
-
 body .swiper {
   overflow: initial;
 }
 
-.swiper-wrapper {
-  gap: 1.75rem;
+.swiper-wrapper::-webkit-scrollbar {
+  width: 0;
 }
+
 
 @media (max-width: 600px) {
   html {
     font-size: 10.12px;
-  }
-
-  body .swiper {
-    transform: translateX(-13rem);
   }
 
 }

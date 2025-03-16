@@ -5,6 +5,12 @@
 	padding: 4.375rem 0 5.625rem;
 }
 
+:global(.swiper-slide) {
+	width: 17.5rem !important;
+	aspect-ratio: 0.7/1 !important;
+	box-sizing: border-box;
+}
+
 .card {
 	min-width: 17.5rem;
 	width: 17.5rem;
@@ -156,5 +162,9 @@
 
 	.cardsContainer {
 		width: 100%;
+	}
+
+	:global(.swiper-slide) {
+		width: 19.57rem !important;
 	}
 }

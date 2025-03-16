@@ -3,11 +3,9 @@ import { AboutStats } from './aboutStats'
 import { AboutText } from './aboutText'
 
 
-export const AboutInfo = () => {
-	return (
-		<div className={styles.aboutInfo}>
-			<AboutText />
-			<AboutStats />
-		</div>
-	)
-}
+export const AboutInfo = () => (
+	<div className={styles.aboutInfo}>
+		<AboutText />
+		<AboutStats />
+	</div>
+)

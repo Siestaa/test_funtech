@@ -5,7 +5,6 @@
 	padding: 1rem 1.5rem;
 	text-transform: uppercase;
 	cursor: pointer;
-	margin-left: auto;
 	font-size: 1rem;
 	outline: 2px solid rgba(20, 20, 22, 1);
 	box-sizing: border-box;
@@ -13,9 +12,9 @@
 	font-family: "Inter", sans-serif;
 	line-height: 1.5rem;
 	border: none;
-	transition: .5s;
+	transition: background-color 0.5s, color 0.5s;
 
-	&:hover {
+	&:hover:not(.disabled) {
 		background-color: rgba(215, 215, 215, 1);
 	}
 }
@@ -25,8 +24,13 @@
 	color: white;
 	outline: none;
 
-	&:hover {
+	&:hover:not(.disabled) {
 		background-color: rgba(215, 215, 215, 1);
 		color: rgba(20, 20, 22, 1);
 	}
+}
+
+.disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
 }

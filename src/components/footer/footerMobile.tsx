@@ -1,52 +1,27 @@
-import { Facebook } from '../../utills/svg/facebook'
-import { Instagram } from '../../utills/svg/instagram'
-import { LinkedIn } from '../../utills/svg/linkedin'
 import { Logo } from '../../utills/svg/logo'
-import { Twitter } from '../../utills/svg/twitter'
 import styles from './footer.module.css'
+import { socialLinks } from './socialLinks'
 
-export const FooterMobile = () => {
-	return (
-		<footer className={styles.footerMobile}>
-			<div className={styles.footerInner}>
-				<div className={styles.linksList}>
-					<a href='#' className={styles.logo}>
-						<Logo />
-						<span className={styles.logoText}>DiveSea</span>
-					</a>
-					<div className={styles.socialList}>
-						<a className={styles.socialLink} href='https://www.instagram.com/'>
-							<Instagram />
-						</a>
-						<a className={styles.socialLink} href='https://ru.linkedin.com/'>
-							<LinkedIn />
-						</a>
-						<a className={styles.socialLink} href='https://www.facebook.com/'>
-							<Facebook />
-						</a>
-						<a className={styles.socialLink} href='https://twitter.com/'>
-							<Twitter />
-						</a>
-					</div>
-					<nav className={styles.list}>
-						<a className={styles.listItem} href='#'>
-							Privacy Policy
-						</a>
-						<a className={styles.listItem} href='#'>
-							Term & Conditions
-						</a>
-						<a className={styles.listItem} href='#'>
-							About Us
-						</a>
-						<a className={styles.listItem} href='#'>
-							Contact
-						</a>
-					</nav>
+export const FooterMobile = () => (
+	<footer className={styles.footerMobile}>
+		<div className={styles.footerInner}>
+			<div className={styles.linksList}>
+				<a href="#" className={styles.logo}>
+					<Logo />
+					<span className={styles.logoText}>DiveSea</span>
+				</a>
+				<div className={styles.socialList}>
+					{socialLinks.map(({ href, Icon }, index) => (
+						<a key={index} className={styles.socialLink} href={href}><Icon /></a>
+					))}
 				</div>
-				<span className={styles.copyright}>
-					© 2023 DiveSea All Rights Reserved.
-				</span>
+				<nav className={styles.list}>
+					{['Privacy Policy', 'Term & Conditions', 'About Us', 'Contact'].map(text => (
+						<a key={text} className={styles.listItem} href="#">{text}</a>
+					))}
+				</nav>
 			</div>
-		</footer>
-	)
-}
+			<span className={styles.copyright}>© 2023 DiveSea All Rights Reserved.</span>
+		</div>
+	</footer>
+)

@@ -1,14 +1,13 @@
-import anime from 'animejs/lib/anime.es.js'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css'
+import { useScreenMetrics } from '../../hooks/useScreenMetrics'
+import { createAnimationTimeline } from '../../utills/animationUtils'
 import { useIntersectionAnimation } from '../../utills/useIntersectionAnimation'
 import styles from './cards.module.css'
 import { CARD_LIST } from './cardsList'
 import { Card } from './components/card'
-
-import 'swiper/swiper-bundle.css'
-import { calculateSlidesPerView } from '../../utills/remValues'
 
 export const Cards = () => {
 	const swiperRef = useRef<SwiperRef>(null)
@@ -16,69 +15,35 @@ export const Cards = () => {
 	const swiperContainerRef = useRef<HTMLDivElement>(null)
 	const buttonsRef = useRef<HTMLDivElement>(null)
 	const containerRef = useRef<HTMLDivElement>(null)
-	const [slidesSetting, setSlidesSetting] = useState(calculateSlidesPerView())
+	const { slidesSettings } = useScreenMetrics()
 
-	const runAnimation = () => {
-		const timeline = anime.timeline({
-			easing: 'easeOutQuad',
-		})
-
-		timeline
-			.add({
-				targets: titleRef.current,
-				translateY: ['5rem', 0],
-				opacity: [0, 1],
-				duration: 500,
-				delay: 200
-			})
-			.add({
-				targets: swiperContainerRef.current,
-				translateY: ['5rem', 0],
-				opacity: [0, 1],
-				duration: 500,
-				delay: 200
-			})
-			.add({
-				targets: buttonsRef.current,
-				translateY: ['5rem', 0],
-				opacity: [0, 1],
-				duration: 500,
-				delay: 200,
-				easing: 'easeInOutQuad',
-			})
+	const animationConfig = {
+		easing: 'easeOutQuad',
+		duration: 500,
+		targets: [
+			{ ref: titleRef, translateY: ['5rem', 0], opacity: [0, 1], delay: 200 },
+			{ ref: swiperContainerRef, translateY: ['5rem', 0], translateX: [-slidesSettings.translateValueX, -slidesSettings.translateValueX], opacity: [0, 1], delay: 200 },
+			{ ref: buttonsRef, translateY: ['5rem', 0], opacity: [0, 1], delay: 200, easing: 'easeInOutQuad' }
+		]
 	}
 
-	useIntersectionAnimation(containerRef, runAnimation)
+	useIntersectionAnimation(containerRef, () => createAnimationTimeline(animationConfig))
 
-	const handlePrevClick = () => {
-		if (swiperRef.current && swiperRef.current.swiper) {
-			swiperRef.current.swiper.slidePrev()
+	const handleSlide = (direction: 'prev' | 'next') => {
+		const swiper = swiperRef.current?.swiper
+		if (swiper) {
+			direction === 'prev' ? swiper.slidePrev() : swiper.slideNext()
 		}
 	}
-
-	const handleNextClick = () => {
-		if (swiperRef.current && swiperRef.current.swiper) {
-			swiperRef.current.swiper.slideNext()
-		}
-	}
-
-	useEffect(() => {
-		const handleResize = () => {
-			setSlidesSetting(calculateSlidesPerView())
-		}
-
-		window.addEventListener('resize', handleResize)
-		return () => window.removeEventListener('resize', handleResize)
-	}, [])
 
 	return (
-		<div ref={containerRef} className={styles.cardsContainer}>
+		<section ref={containerRef} className={styles.cardsContainer}>
 			<h2 ref={titleRef} className={styles.cardsTitle}>Weekly - Top NFT</h2>
 			<div ref={swiperContainerRef}>
 				<Swiper
 					ref={swiperRef}
-					spaceBetween={slidesSetting.gapBetweenSlides}
-					slidesPerView={slidesSetting.slidesPerView}
+					spaceBetween={slidesSettings.gapBetweenSlides}
+					slidesPerView="auto"
 					loop={true}
 					modules={[Navigation]}
 					navigation={false}
@@ -86,25 +51,19 @@ export const Cards = () => {
 				>
 					{CARD_LIST.map((card, index) => (
 						<SwiperSlide key={`${card.title}-${index}`}>
-							<Card
-								img={card.img}
-								title={card.title}
-								status={card.status}
-								price={card.price}
-								currentTimer={card.currentTimer}
-							/>
+							<Card {...card} />
 						</SwiperSlide>
 					))}
 				</Swiper>
 			</div>
 			<div ref={buttonsRef} className={styles.cardsButtonContainer}>
-				<button className={styles.cardButton} type="button" onClick={handlePrevClick}>
-					<img src="/cardArrow.svg" />
+				<button className={styles.cardButton} onClick={() => handleSlide('prev')}>
+					<img src="/cardArrow.svg" alt="Previous" />
 				</button>
-				<button className={styles.cardButton} type="button" onClick={handleNextClick}>
-					<img src="/cardArrow.svg" />
+				<button className={styles.cardButton} onClick={() => handleSlide('next')}>
+					<img src="/cardArrow.svg" alt="Next" />
 				</button>
 			</div>
-		</div>
+		</section>
 	)
 }

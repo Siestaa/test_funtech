@@ -101,18 +101,17 @@ export const getScreenSize = () => {
 	return 'mobile'
 }
 
-export const calculateSlidesPerView = () => {
+export const calculateGapBetweenSlides = () => {
 	const baseFontSize = getRemByScreenSize()
+	const gapRem = 2.5
 	const screenWidthPx = window.innerWidth
 	const screenWidthRem = screenWidthPx / baseFontSize
 	const cardWidthRem = 17.5
-	const gapRem = 2.5
 	const totalCellWidthRem = cardWidthRem + gapRem // 20rem
 
-	const slidesPerView = Math.max(
-		1,
-		Math.floor(screenWidthRem / totalCellWidthRem)
-	)
+	const widthSildes = Math.max(1, Math.ceil(screenWidthRem / totalCellWidthRem))
+	const translateValueX = (screenWidthRem - widthSildes) / 2
 	const gapBetweenSlides = gapRem * baseFontSize
-	return { slidesPerView, gapBetweenSlides, baseFontSize }
+	console.log(translateValueX)
+	return { translateValueX, gapBetweenSlides, baseFontSize }
 }

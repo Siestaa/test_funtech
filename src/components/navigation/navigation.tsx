@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
-import { calculateSlidesPerView, getScreenSize } from '../../utills/remValues'
+import { calculateGapBetweenSlides, getScreenSize } from '../../utills/remValues'
 import { Button } from '../ui/button/button'
 import styles from './navigation.module.css'
 import { NavigationMobile } from './navigationMobile'
@@ -8,7 +8,7 @@ import { NavigationMobile } from './navigationMobile'
 export const Navigation = () => {
 	const [isFixing, setIsFixing] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
-	const { baseFontSize } = calculateSlidesPerView()
+	const { baseFontSize } = calculateGapBetweenSlides()
 	const [screenSize, setScreenSize] = useState(getScreenSize())
 
 

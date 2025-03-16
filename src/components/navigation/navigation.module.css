@@ -28,6 +28,10 @@
 	padding: 3rem 6rem;
 	gap: 10px;
 	align-items: center;
+
+	& button {
+		margin-left: auto;
+	}
 }
 
 .navigationList {
